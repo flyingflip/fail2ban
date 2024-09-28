@@ -1,0 +1,17 @@
+# Sample docker-compose file.
+# Cal also be run in network mode.
+
+services:
+  webapp:
+    image: flyingflip/fail2ban
+    container_name: f2b
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8098:80
+    networks:
+      - f2b
+    restart: unless-stopped
+
+networks:
+  f2b:
